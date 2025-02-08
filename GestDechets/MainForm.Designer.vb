@@ -28,13 +28,8 @@ Partial Class MainForm
         Panel5 = New Panel()
         ButtonAjouter = New Button()
         ButtonModifier = New Button()
-        ButtonSupp = New Button()
-        ButtonRecher = New Button()
         Panel2 = New Panel()
-        Panel3 = New Panel()
-        Panel4 = New Panel()
         Panel6 = New Panel()
-        Button1 = New Button()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -70,9 +65,9 @@ Partial Class MainForm
         ' ButtonAjouter
         ' 
         ButtonAjouter.Font = New Font("Times New Roman", 11F)
-        ButtonAjouter.Location = New Point(139, 234)
+        ButtonAjouter.Location = New Point(119, 374)
         ButtonAjouter.Name = "ButtonAjouter"
-        ButtonAjouter.Size = New Size(282, 140)
+        ButtonAjouter.Size = New Size(341, 168)
         ButtonAjouter.TabIndex = 2
         ButtonAjouter.Text = "Ajouter"
         ButtonAjouter.UseVisualStyleBackColor = True
@@ -80,92 +75,38 @@ Partial Class MainForm
         ' ButtonModifier
         ' 
         ButtonModifier.Font = New Font("Times New Roman", 11F)
-        ButtonModifier.Location = New Point(139, 487)
+        ButtonModifier.Location = New Point(584, 374)
         ButtonModifier.Name = "ButtonModifier"
-        ButtonModifier.Size = New Size(282, 140)
+        ButtonModifier.Size = New Size(319, 168)
         ButtonModifier.TabIndex = 3
         ButtonModifier.Text = "Modifier"
         ButtonModifier.UseVisualStyleBackColor = True
-        ' 
-        ' ButtonSupp
-        ' 
-        ButtonSupp.Font = New Font("Times New Roman", 11F)
-        ButtonSupp.Location = New Point(630, 234)
-        ButtonSupp.Name = "ButtonSupp"
-        ButtonSupp.Size = New Size(282, 140)
-        ButtonSupp.TabIndex = 4
-        ButtonSupp.Text = "Supprimer"
-        ButtonSupp.UseVisualStyleBackColor = True
-        ' 
-        ' ButtonRecher
-        ' 
-        ButtonRecher.Font = New Font("Times New Roman", 11F)
-        ButtonRecher.Location = New Point(630, 497)
-        ButtonRecher.Name = "ButtonRecher"
-        ButtonRecher.Size = New Size(282, 140)
-        ButtonRecher.TabIndex = 5
-        ButtonRecher.Text = "Rechercher "
-        ButtonRecher.UseVisualStyleBackColor = True
         ' 
         ' Panel2
         ' 
         Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), Image)
         Panel2.BackgroundImageLayout = ImageLayout.Center
-        Panel2.Location = New Point(161, 519)
+        Panel2.Location = New Point(609, 420)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(65, 73)
+        Panel2.Size = New Size(78, 73)
         Panel2.TabIndex = 6
-        ' 
-        ' Panel3
-        ' 
-        Panel3.BackgroundImage = CType(resources.GetObject("Panel3.BackgroundImage"), Image)
-        Panel3.BackgroundImageLayout = ImageLayout.Center
-        Panel3.Location = New Point(648, 272)
-        Panel3.Name = "Panel3"
-        Panel3.Size = New Size(56, 73)
-        Panel3.TabIndex = 7
-        ' 
-        ' Panel4
-        ' 
-        Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), Image)
-        Panel4.BackgroundImageLayout = ImageLayout.Center
-        Panel4.Location = New Point(648, 543)
-        Panel4.Name = "Panel4"
-        Panel4.Size = New Size(56, 68)
-        Panel4.TabIndex = 8
         ' 
         ' Panel6
         ' 
         Panel6.BackgroundImage = CType(resources.GetObject("Panel6.BackgroundImage"), Image)
         Panel6.BackgroundImageLayout = ImageLayout.Center
-        Panel6.Location = New Point(161, 272)
+        Panel6.Location = New Point(153, 420)
         Panel6.Name = "Panel6"
-        Panel6.Size = New Size(65, 73)
+        Panel6.Size = New Size(78, 68)
         Panel6.TabIndex = 7
-        ' 
-        ' Button1
-        ' 
-        Button1.BackColor = Color.Red
-        Button1.Font = New Font("Times New Roman", 11F)
-        Button1.Location = New Point(916, 738)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(177, 72)
-        Button1.TabIndex = 9
-        Button1.Text = "Close"
-        Button1.UseVisualStyleBackColor = False
         ' 
         ' MainForm
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1088, 807)
-        Controls.Add(Button1)
+        ClientSize = New Size(1096, 807)
         Controls.Add(Panel6)
-        Controls.Add(Panel4)
-        Controls.Add(Panel3)
         Controls.Add(Panel2)
-        Controls.Add(ButtonRecher)
-        Controls.Add(ButtonSupp)
         Controls.Add(ButtonModifier)
         Controls.Add(ButtonAjouter)
         Controls.Add(Panel1)
@@ -180,12 +121,7 @@ Partial Class MainForm
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ButtonAjouter As Button
     Friend WithEvents ButtonModifier As Button
-    Friend WithEvents ButtonSupp As Button
-    Friend WithEvents ButtonRecher As Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel6 As Panel
-    Friend WithEvents Button1 As Button
 End Class

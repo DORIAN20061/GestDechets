@@ -44,6 +44,8 @@ Partial Class ModificationForm
         Label3 = New Label()
         Label2 = New Label()
         MenuStrip1 = New MenuStrip()
+        btnSearch = New Button()
+        txtSearch = New TextBox()
         Panel1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -88,28 +90,29 @@ Partial Class ModificationForm
         ' 
         ' ButtonModifier
         ' 
-        ButtonModifier.Location = New Point(24, 868)
+        ButtonModifier.Location = New Point(34, 850)
         ButtonModifier.Name = "ButtonModifier"
-        ButtonModifier.Size = New Size(112, 34)
+        ButtonModifier.Size = New Size(112, 41)
         ButtonModifier.TabIndex = 7
         ButtonModifier.Text = "Modifier"
         ButtonModifier.UseVisualStyleBackColor = True
         ' 
         ' ButtonSupprimer
         ' 
-        ButtonSupprimer.Location = New Point(173, 868)
+        ButtonSupprimer.BackColor = Color.Red
+        ButtonSupprimer.Location = New Point(183, 850)
         ButtonSupprimer.Name = "ButtonSupprimer"
-        ButtonSupprimer.Size = New Size(112, 34)
+        ButtonSupprimer.Size = New Size(112, 41)
         ButtonSupprimer.TabIndex = 8
         ButtonSupprimer.Text = "Supprimer"
-        ButtonSupprimer.UseVisualStyleBackColor = True
+        ButtonSupprimer.UseVisualStyleBackColor = False
         ' 
         ' ButtonAnnuler
         ' 
         ButtonAnnuler.BackColor = Color.LimeGreen
-        ButtonAnnuler.Location = New Point(332, 868)
+        ButtonAnnuler.Location = New Point(342, 850)
         ButtonAnnuler.Name = "ButtonAnnuler"
-        ButtonAnnuler.Size = New Size(112, 34)
+        ButtonAnnuler.Size = New Size(112, 41)
         ButtonAnnuler.TabIndex = 9
         ButtonAnnuler.Text = "Revenir"
         ButtonAnnuler.UseVisualStyleBackColor = False
@@ -231,11 +234,30 @@ Partial Class ModificationForm
         MenuStrip1.TabIndex = 38
         MenuStrip1.Text = "MenuStrip1"
         ' 
+        ' btnSearch
+        ' 
+        btnSearch.BackgroundImage = CType(resources.GetObject("btnSearch.BackgroundImage"), Image)
+        btnSearch.Location = New Point(1147, 112)
+        btnSearch.Name = "btnSearch"
+        btnSearch.Size = New Size(41, 41)
+        btnSearch.TabIndex = 40
+        btnSearch.UseVisualStyleBackColor = True
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.BackColor = SystemColors.ScrollBar
+        txtSearch.Location = New Point(1003, 117)
+        txtSearch.Name = "txtSearch"
+        txtSearch.Size = New Size(150, 31)
+        txtSearch.TabIndex = 41
+        ' 
         ' ModificationForm
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1526, 1043)
+        Controls.Add(txtSearch)
+        Controls.Add(btnSearch)
         Controls.Add(comboTypeDechet)
         Controls.Add(comboUniteMesure)
         Controls.Add(txtQuantite)
@@ -287,4 +309,6 @@ Partial Class ModificationForm
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents btnSearch As Button
+    Friend WithEvents txtSearch As TextBox
 End Class

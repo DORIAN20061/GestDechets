@@ -5,11 +5,20 @@ Public Class ModificationForm
     Private selectedId As Integer = 0
     Private dateCollecte As Object
 
-    Private Sub LoadRecords()
+    Private Sub LoadRecords(Optional searchTerm As String = "")
         Dim query As String = "SELECT * FROM dechets"
-        Dim dataTable As DataTable = db.ExecuteQuery(query, Nothing)
+        Dim parameters As New List(Of MySqlParameter)()
+
+        If Not String.IsNullOrEmpty(searchTerm) Then
+            query &= " WHERE id LIKE @searchTerm OR nom_dechet LIKE @searchTerm OR type_dechet LIKE @searchTerm OR quantite LIKE @searchTerm OR unite_mesure LIKE @searchTerm OR lieu_collecte LIKE @searchTerm OR responsable LIKE @searchTerm"
+            parameters.Add(New MySqlParameter("@searchTerm", "%" & searchTerm & "%"))
+        End If
+
+        Dim dataTable As DataTable = db.ExecuteQuery(query, parameters)
         DataGridView1.DataSource = dataTable
     End Sub
+
+
     Private Sub MainToolStripMenuItem1_Click(sender As Object, e As EventArgs)
         Dim mainform As New MainForm
         mainform.Show()
@@ -21,11 +30,14 @@ Public Class ModificationForm
     End Sub
 
     Private Sub ButtonSupprimer_Click(sender As Object, e As EventArgs) Handles ButtonSupprimer.Click
-        Dim del As New SuppressionForm
-        del.Show()
-        Me.Hide()
-
+        If selectedId <> 0 Then
+            SupprimerDechet(selectedId)
+            LoadRecords()
+        Else
+            MessageBox.Show("Veuillez sélectionner un enregistrement à supprimer.")
+        End If
     End Sub
+
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         ' Sélectionner l'ID de l'enregistrement
         If e.RowIndex >= 0 Then
@@ -56,6 +68,7 @@ Public Class ModificationForm
             ' Ajoutez ici le code pour afficher la photo si nécessaire
         End If
     End Sub
+
     Private Sub ModificationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Charger les enregistrements dans le DataGridView
         LoadRecords()
@@ -63,21 +76,21 @@ Public Class ModificationForm
 
     Private Sub ButtonModifier_Click(sender As Object, e As EventArgs) Handles ButtonModifier.Click
         ' Récupérer les informations modifiées
-        Dim nomDechet As String = txtNomDechet.Text
-        Dim typeDechet As String = comboTypeDechet.Text
-        Dim quantite As Decimal = Decimal.Parse(txtQuantite.Text)
-        Dim uniteMesure As String = comboUniteMesure.Text
-        Dim lieuCollecte As String = txtLieuCollecte.Text
+        Dim nomDechet = txtNomDechet.Text
+        Dim typeDechet = comboTypeDechet.Text
+        Dim quantite = Decimal.Parse(txtQuantite.Text)
+        Dim uniteMesure = comboUniteMesure.Text
+        Dim lieuCollecte = txtLieuCollecte.Text
         'Dim etatDechet As String = comboEtatDechet.Text
         'Dim remarques As String = txtRemarques.Text
-        Dim responsable As String = txtResponsable.Text
+        Dim responsable = txtResponsable.Text
         ' Ajoutez ici le code pour récupérer la photo si nécessaire
 
         ' Utiliser la date actuelle pour la colonne date_collecte
-        Dim dateCollecte As Date = Date.Now
+        Dim dateCollecte = Date.Now
 
         ' Mettre à jour l'enregistrement
-        Dim updateQuery As String = "UPDATE dechets SET nom_dechet = @nom_dechet, type_dechet = @type_dechet, quantite = @quantite, unite_mesure = @unite_mesure, date_collecte = @date_collecte, lieu_collecte = @lieu_collecte, responsable = @responsable WHERE id = @id"
+        Dim updateQuery = "UPDATE dechets SET nom_dechet = @nom_dechet, type_dechet = @type_dechet, quantite = @quantite, unite_mesure = @unite_mesure, date_collecte = @date_collecte, lieu_collecte = @lieu_collecte, responsable = @responsable WHERE id = @id"
         Dim parameters As New List(Of MySqlParameter) From {
             New MySqlParameter("@nom_dechet", nomDechet),
             New MySqlParameter("@type_dechet", typeDechet),
@@ -96,6 +109,20 @@ Public Class ModificationForm
         LoadRecords()
     End Sub
 
+    Private Sub SupprimerDechet(id As Integer)
+        Dim deleteQuery = "DELETE FROM dechets WHERE id = @id"
+        Dim parameters As New List(Of MySqlParameter) From {
+            New MySqlParameter("@id", id)
+        }
+
+        Try
+            db.ExecuteNonQuery(deleteQuery, parameters)
+            MessageBox.Show("Enregistrement supprimé avec succès!")
+        Catch ex As Exception
+            MessageBox.Show("Une erreur s'est produite lors de la suppression de l'enregistrement : " & ex.Message)
+        End Try
+    End Sub
+
     Private Sub txtNomDechet_TextChanged(sender As Object, e As EventArgs) Handles txtNomDechet.TextChanged
 
     End Sub
@@ -109,4 +136,18 @@ Public Class ModificationForm
         mainForm.Show()
         Me.Hide()
     End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Dim searchTerm As String = txtSearch.Text
+        LoadRecords(searchTerm)
+    End Sub
+
 End Class

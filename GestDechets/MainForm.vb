@@ -17,10 +17,8 @@
         Me.Hide()
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ButtonSupp.Click
-        Dim del As New SuppressionForm
-        del.Show()
-        Me.Hide()
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub ButtonModifier_Click(sender As Object, e As EventArgs) Handles ButtonModifier.Click
@@ -29,10 +27,8 @@
         Me.Hide()
     End Sub
 
-    Private Sub ButtonRecher_Click(sender As Object, e As EventArgs) Handles ButtonRecher.Click
-        Dim searchform As New RechercheForm
-        searchform.Show()
-        Hide()
+    Private Sub ButtonRecher_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
@@ -43,7 +39,7 @@
 
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
         Application.Exit()
     End Sub
 End Class
